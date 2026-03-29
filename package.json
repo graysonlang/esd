@@ -1,0 +1,19 @@
+{
+  "name": "esd",
+  "version": "0.0.0",
+  "description": "esbuild debugging",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "node build.mjs",
+    "debug": "node debug.mjs",
+    "serve": "node serve.mjs"
+  },
+  "repository": "github:graysonlang/esd",
+  "keywords": [],
+  "author": "Grayson Lang",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.27.4"
+  }
+}
