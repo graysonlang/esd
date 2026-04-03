@@ -3,6 +3,7 @@ import { parseArgs } from 'node:util';
 
 import esbuild from 'esbuild';
 import getOptions from './options.mjs';
+import pluginVscodeProblemMatcher from './plugins/esbuild-plugin-vscode-problem-matcher.mjs';
 
 function getBanner() {
   return `(() => {
@@ -23,6 +24,7 @@ async function main() {
     },
   });
 
+  const watch = args.values.watch;
   const options = getOptions(
     {
       banner: { js: getBanner() },
@@ -31,10 +33,11 @@ async function main() {
     args.values.verbose,
     undefined,
   );
+  options.plugins.push(pluginVscodeProblemMatcher());
 
   const ctx = await esbuild.context(options);
 
-  if (args.values.watch) {
+  if (watch) {
     await ctx.watch();
   }
 

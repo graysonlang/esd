@@ -7,7 +7,7 @@
       "request": "launch",
       "url": "http://127.0.0.1:8000",
       "webRoot": "${workspaceFolder}/src",
-      "preLaunchTask": "esbuild:debug",
+      "preLaunchTask": "npm:debug",
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/dist/main.mjs"]
     }
