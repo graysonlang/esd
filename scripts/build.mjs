@@ -7,8 +7,8 @@ import esbuild from 'esbuild';
 import getOptions from './options.mjs';
 import pluginVscodeProblemMatcher from '@graysonlang/esp/esbuild-plugin-vscode-problem-matcher';
 import { printErrorsAndWarnings } from '@graysonlang/esp/esbuild-problem-format';
-import pluginEslint from 'esbuild-plugin-eslint'
 
+import pluginEslint from './plugins/esbuild-plugin-eslint.js';
 
 let messageQueue = [];
 let sseClient = null;
@@ -160,7 +160,7 @@ async function main() {
 
       minify: { type: 'boolean', short: 'm', default: true },
 
-      lint: { type: 'boolean', short: 'l', default: false },
+      lint: { type: 'boolean', short: 'l', default: true },
       proxy: { type: 'boolean', short: 'p', default: false },
       serve: { type: 'boolean', short: 's', default: false },
       vscode: { type: 'boolean', short: 'c', default: false },

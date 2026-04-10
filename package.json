@@ -18,15 +18,14 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build",
-    "build": "node ./scripts/build.mjs --lint",
+    "build": "node ./scripts/build.mjs",
     "build:vscode": "node ./scripts/build.mjs --vscode",
     "debug:vscode": "node ./scripts/build.mjs --vscode --watch",
     "serve": "node ./scripts/build.mjs --serve --proxy --watch"
   },
   "dependencies": {
     "@graysonlang/esp": "github:graysonlang/esp",
-    "esbuild": "^0.28.0",
-    "esbuild-plugin-eslint": "^0.3.12"
+    "esbuild": "^0.28.0"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0"
