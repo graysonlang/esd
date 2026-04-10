@@ -27,6 +27,7 @@ async function buildFilterFromEslintConfig(ESLint, eslintOptions) {
       return config ? ext : null;
     })
   )).filter(Boolean);
+
   return new RegExp(`\\.(?:${matched.join("|")})$`);
 }
 
@@ -47,6 +48,7 @@ export default ({
       const eslint = new ESLint(eslintOptions);
       const filter = await buildFilterFromEslintConfig(ESLint, eslintOptions);
       const seenFiles = new Set();
+      const dirtyFiles = new Set();
 
       build.onStart(() => {
         buildStartTime = Date.now();
@@ -64,7 +66,7 @@ export default ({
         }
 
         const { changed } = await _freshness.update(seenFiles);
-        const filesToLint = changed.size > 0 ? [...changed] : [];
+        const filesToLint = [...new Set([...changed, ...dirtyFiles])];
 
         if (filesToLint.length === 0) {
           return;
@@ -78,6 +80,14 @@ export default ({
 
         const warnings = results.reduce((count, result) => count + result.warningCount, 0);
         const errors = results.reduce((count, result) => count + result.errorCount, 0);
+
+        for (const result of results) {
+          if (result.warningCount > 0 || result.errorCount > 0) {
+            dirtyFiles.add(result.filePath);
+          } else {
+            dirtyFiles.delete(result.filePath);
+          }
+        }
 
         if (eslintOptions.fix) {
           await ESLint.outputFixes(results);
