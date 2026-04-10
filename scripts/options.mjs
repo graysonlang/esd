@@ -1,22 +1,26 @@
-import pluginImp from './plugins/esbuild-plugin-imp.mjs';
+import pluginGlobCopy from '@graysonlang/esp/esbuild-plugin-glob-copy';
+import pluginImp from '@graysonlang/esp/esbuild-plugin-imp';
 
 export default function getOptions(args, verbose, logger) {
   return {
     assetNames: '[name]',
     bundle: true,
-    entryPoints: ['./src/main.mjs'],
+    entryPoints: {
+      'index': 'src/index.js',
+      'main': 'app/main.js',
+    },
     format: 'esm',
     loader: {
       '.html': 'file',
     },
     metafile: true,
     outdir: 'dist',
-    outExtension: {'.js': '.mjs'},
     plugins: [
+      pluginGlobCopy({ logger }),
       pluginImp({ logger, verbose }),
     ],
     sourcemap: true,
-    target: [ 'esnext' ],
+    target: ['esnext'],
     ...args,
   };
 }
