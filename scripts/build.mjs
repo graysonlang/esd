@@ -5,10 +5,9 @@ import { parseArgs } from 'node:util';
 
 import esbuild from 'esbuild';
 import getOptions from './options.mjs';
+import pluginEslint from '@graysonlang/esp/esbuild-plugin-eslint';
 import pluginVscodeProblemMatcher from '@graysonlang/esp/esbuild-plugin-vscode-problem-matcher';
 import { printErrorsAndWarnings } from '@graysonlang/esp/esbuild-problem-format';
-
-import pluginEslint from './plugins/esbuild-plugin-eslint.js';
 
 let messageQueue = [];
 let sseClient = null;
@@ -193,18 +192,9 @@ async function main() {
     (proxy ? sendLogToBrowser : undefined),
   );
   if (lint) {
-    options.plugins.push(
-      pluginEslint(
-        {
-          /*
-            Plugin options:
-            filter: /\.js$/,      // Only lint specific files
-            throwOnError: true,   // Fail the build if errors are found
-            fix: true,            // Automatically fix stylistic issues
-          */
-        }
-      )
-    );
+    options.plugins.push(pluginEslint({
+      // fix: true
+    }));
   }
   if (vscode) {
     options.plugins.push(pluginVscodeProblemMatcher());
