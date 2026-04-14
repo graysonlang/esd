@@ -17,7 +17,6 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run build",
     "build": "node ./scripts/build.mjs",
     "build:vscode": "node ./scripts/build.mjs --vscode",
     "debug:vscode": "node ./scripts/build.mjs --vscode --watch",
