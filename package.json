@@ -21,7 +21,8 @@
     "build": "node ./scripts/build.mjs",
     "build:vscode": "node ./scripts/build.mjs --vscode",
     "debug:vscode": "node ./scripts/build.mjs --vscode --watch",
-    "serve": "node ./scripts/build.mjs --serve --proxy --watch"
+    "serve": "node ./scripts/build.mjs --serve --proxy --watch",
+    "serve:spawn": "node ./scripts/build.mjs --serve --proxy --watch --spawn"
   },
   "dependencies": {
     "@graysonlang/esp": "github:graysonlang/esp",
