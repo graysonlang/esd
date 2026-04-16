@@ -20,14 +20,16 @@
     "build": "node ./scripts/build.mjs",
     "build:vscode": "node ./scripts/build.mjs --vscode",
     "debug:vscode": "node ./scripts/build.mjs --vscode --watch",
+    "lint": "eslint . --ignore-pattern 'dist'",
     "serve": "node ./scripts/build.mjs --serve --proxy --watch",
-    "serve:spawn": "node ./scripts/build.mjs --serve --proxy --watch --spawn"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@graysonlang/esp": "github:graysonlang/esp",
-    "esbuild": "^0.28.0"
+    "@graysonlang/esp": "^1.0.0"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^5.10.0"
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^9.39.4"
   }
 }

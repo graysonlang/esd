@@ -7,8 +7,8 @@ function getOptions(args, verbose, logger) {
     assetNames: '[name]',
     bundle: true,
     entryPoints: {
-      'index': 'src/index.js',
-      'main': 'app/main.js',
+      index: 'src/index.js',
+      main: 'app/main.js',
     },
     format: 'esm',
     loader: {
@@ -27,4 +27,3 @@ function getOptions(args, verbose, logger) {
 }
 
 runBuild(getOptions);
-
