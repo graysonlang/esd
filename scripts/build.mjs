@@ -20,7 +20,6 @@ function getOptions(args, verbose, logger) {
       pluginGlobCopy({ logger }),
       pluginImp({ logger, verbose }),
     ],
-    sourcemap: true,
     target: ['esnext'],
     ...args,
   };

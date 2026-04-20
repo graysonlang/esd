@@ -17,11 +17,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "node ./scripts/build.mjs",
-    "build:vscode": "node ./scripts/build.mjs --vscode",
-    "debug:vscode": "node ./scripts/build.mjs --vscode --watch",
     "lint": "eslint . --ignore-pattern 'dist'",
-    "serve": "node ./scripts/build.mjs --serve --proxy --watch",
+    "build": "node ./scripts/build.mjs --lint --minify ",
+    "build:vscode": "node ./scripts/build.mjs --lint --minify --vscode",
+    "debug:vscode": "node ./scripts/build.mjs --lint --sourcemap --watch --serve --vscode",
+    "serve": "node ./scripts/build.mjs --lint --sourcemap --watch --serve --proxy --launch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
