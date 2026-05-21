@@ -1,6 +1,6 @@
-import { runBuild } from '@graysonlang/esp/esbuild-runner';
 import pluginGlobCopy from '@graysonlang/esp/esbuild-plugin-glob-copy';
 import pluginImp from '@graysonlang/esp/esbuild-plugin-imp';
+import { runBuild } from '@graysonlang/esp/esbuild-runner';
 
 function getOptions(args, verbose, logger) {
   return {
@@ -14,7 +14,6 @@ function getOptions(args, verbose, logger) {
     loader: {
       '.html': 'file',
     },
-    metafile: true,
     outdir: 'dist',
     plugins: [
       pluginGlobCopy({ logger }),
