@@ -17,9 +17,13 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "prepare": "node ./scripts/build.mjs --sync-launch",
+
+    "ports": "node ./scripts/build.mjs --print-port",
+    "sync:launch": "node ./scripts/build.mjs --sync-launch",
     "build": "node ./scripts/build.mjs --lint --minify",
-    "serve": "node ./scripts/build.mjs --lint --sourcemap --watch --serve --debug-port=9222",
-    "serve:https": "ESP_DEV_CERT_NAME=$npm_package_config_esp_dev_cert_name npm run serve -- --host=0.0.0.0 --port=8443",
+    "serve": "node ./scripts/build.mjs --lint --sourcemap --watch --serve --debug-port=auto",
+    "serve:https": "ESP_DEV_CERT_NAME=$npm_package_config_esp_dev_cert_name npm run serve -- --host=0.0.0.0",
 
     "dev": "npm run serve -- --proxy --launch",
     "dev:https": "npm run serve:https -- --proxy --launch",
@@ -34,7 +38,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@graysonlang/esp": "^1.6.0"
+    "@graysonlang/esp": "^1.7.0"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0",
