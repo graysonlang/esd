@@ -33,7 +33,7 @@
     "vscode:debug:https": "npm run serve:https -- --vscode",
 
     "cert:dev": "ESP_DEV_CERT_NAME=$npm_package_config_esp_dev_cert_name esp-generate-dev-cert",
-    "lint": "eslint . --ignore-pattern 'dist'",
+    "lint": "eslint . --ignore-pattern '{dist,www}/**'",
 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
