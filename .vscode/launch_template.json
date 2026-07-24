@@ -1,11 +1,15 @@
 {
   //! Source of truth for .vscode/launch.json — edit this file, not the generated one.
   //!
-  //! The esp esbuild runner renders this template into .vscode/launch.json,
-  //! substituting the ports derived for this checkout for the {{http}}, {{https}}
-  //! and {{debug}} placeholders below. Ports come from the absolute path of
-  //! scripts/build.mjs, so every clone and worktree renders its own launch.json
+  //! The esbuild runner renders this template into .vscode/launch.json, substituting
+  //! the ports derived for this checkout (see src/ports.js) for the {{http}},
+  //! {{https}} and {{debug}} placeholders below. Ports come from the absolute path
+  //! of scripts/build.mjs, so every clone and worktree renders its own launch.json
   //! and two of them never collide.
+  //!
+  //! {{outdir}} is replaced with the build's output directory (the `outdir` in
+  //! scripts/build.mjs, e.g. dist or www), so outFiles points at wherever this
+  //! build actually writes its bundles.
   //!
   //! Lines starting with //! are template-only notes and are stripped on render.
   //! Rendered by `npm install` (prepare) and refreshed whenever the runner serves
@@ -22,7 +26,7 @@
       "preLaunchTask": "debug",
       "postDebugTask": "Kill debug server",
       "sourceMaps": true,
-      "outFiles": ["${workspaceFolder}/dist/*.js"]
+      "outFiles": ["${workspaceFolder}/{{outdir}}/*.js"]
     },
     {
       "name": "Debug in Chrome (https)",
@@ -34,11 +38,11 @@
       "preLaunchTask": "debug:https",
       "postDebugTask": "Kill debug server",
       "sourceMaps": true,
-      "outFiles": ["${workspaceFolder}/dist/*.js"]
+      "outFiles": ["${workspaceFolder}/{{outdir}}/*.js"]
     },
     {
-      //! Attaches to the dedicated Chrome that `npm run dev` launches on this
-      //! checkout's derived debug port (--debug-port=auto).
+      // Attaches to the dedicated Chrome that `npm run dev` launches on this
+      // checkout's derived debug port (--debug-port=auto).
       "name": "Attach to Chrome",
       "type": "chrome",
       "request": "attach",

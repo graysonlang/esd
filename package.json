@@ -38,7 +38,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@graysonlang/esp": "^1.7.0"
+    "@graysonlang/esp": "^1.7.1"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0",
